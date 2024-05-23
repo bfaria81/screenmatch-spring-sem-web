@@ -1,5 +1,6 @@
 package com.example.alura.screenmatchspring;
 
+import com.example.alura.screenmatchspring.model.DadosEpisodio;
 import com.example.alura.screenmatchspring.model.DadosSerie;
 import com.example.alura.screenmatchspring.service.ConsumoApi;
 import com.example.alura.screenmatchspring.service.ConverteDados;
@@ -24,6 +25,10 @@ public class ScreenmatchspringApplication implements CommandLineRunner {
 		ConverteDados conversor = new ConverteDados();
 		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
 		System.out.println(dados);
+		json = consumoApi.obterDados("http://www.omdbapi.com/?t=friends&apikey=71d4fbdf");
+        DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
+
 
 	}
 }
